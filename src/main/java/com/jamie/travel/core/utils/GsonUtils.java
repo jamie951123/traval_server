@@ -1,4 +1,4 @@
-package com.jamie.travel.core.util;
+package com.jamie.travel.core.utils;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

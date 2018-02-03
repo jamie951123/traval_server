@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.UserProfileService;
 
-@RequestMapping(value="/secret/authentication/user")
+@RequestMapping(value = TokenObject.MAINAPI+"/authentication/user")
 @Controller
 public class UserProfileController {
 	Logger log = LoggerFactory.getLogger(UserProfileController.class);

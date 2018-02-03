@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 import com.jamie.travel.jwt.security.JwtAuthenticationFilter;
-import com.jamie.travel.jwt.security.JwtUtil;
+import com.jamie.travel.jwt.security.JwtUtils;
 
 
 @ComponentScan

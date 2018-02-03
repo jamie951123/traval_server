@@ -9,29 +9,27 @@ import com.jamie.travel.exception.TokenValidationException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-public class JwtUtil {
+public class JwtUtils {
 	static final String iss = "System";
-	static final long REGISTRATION_EXPIRATION_TIME = 1800*1000;
+	static final long REGISTRATION_EXPIRATION_TIME = 1800*1000; //expire date
     static final long EXPIRATION_TIME = 3600*1000; // 1 hour
-    static final String SECRET = "JamieSever";
     public static final String TOKEN_PREFIX = "Token:";
-    public static final String HEADER_STRING = "Authorization";
-    public static final String HEADER_REGISTRATION = "Registration";
     
-    public static String generateToken(LinkedHashMap<String, Object> map) {
+    
+    public static String generateToken(LinkedHashMap<String, Object> map,String secret) {
         String jwt = Jwts.builder()
                 .setClaims(map)
                 .setExpiration((Date)map.get("expired"))
-                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
         return jwt;
     }
 
-    public static Map<String,Object> validateToken(String token) {
+    public static Map<String,Object> validateToken(String token,String secret)  {
         if (token != null) {
             // parse the token.
             Map<String,Object> body = Jwts.parser()
-                    .setSigningKey(SECRET)
+                    .setSigningKey(secret)
                     .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
                     .getBody();
             return body;

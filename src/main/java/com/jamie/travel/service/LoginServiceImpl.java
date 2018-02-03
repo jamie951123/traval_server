@@ -3,7 +3,7 @@ package com.jamie.travel.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jamie.travel.core.util.ObjectUtils;
+import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
 import com.jamie.travel.model.UserProfile;
 

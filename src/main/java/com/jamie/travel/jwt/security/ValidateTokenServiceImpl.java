@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.jamie.travel.core.util.ObjectUtils;
+import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
 import com.jamie.travel.model.Role;
 import com.jamie.travel.service.UserProfileService;
@@ -23,7 +23,7 @@ public class ValidateTokenServiceImpl implements ValidateTokenService {
 	@Override
 	public boolean validate_login_general(String token) {
 		// TODO Auto-generated method stub
-		Map<String,Object> body = JwtUtil.validateToken(token);
+		Map<String,Object> body = JwtUtils.validateToken(token,TokenObject.LOGIN_SECRET);
 		try{
 			String iss = (String) (body.get("iss"));
 			String sub = (String) (body.get("sub"));
@@ -48,7 +48,7 @@ public class ValidateTokenServiceImpl implements ValidateTokenService {
 	@Override
 	public boolean validate_registration_token(String token) {
 		// TODO Auto-generated method stub
-		Map<String,Object> body = JwtUtil.validateToken(token);
+		Map<String,Object> body = JwtUtils.validateToken(token,TokenObject.REGISTRATION_SECRET);
 		try{
 			TokenType tokenType = TokenType.valueOf((String)body.get("token_type"));
 			

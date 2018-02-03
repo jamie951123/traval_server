@@ -16,7 +16,7 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.jamie.travel.core.util.ObjectUtils;
+import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
 
 @Service
@@ -36,10 +36,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		
 		try {
 	           if(pathMatcher.match(FilterPattern.Pattern_UserProfile_Controller, request.getServletPath())) {
-	               String token = request.getHeader(JwtUtil.HEADER_STRING);
+	               String token = request.getHeader(TokenObject.HEADER_STRING);
 	               validateTokenService.validate_login_general(token);
 	           }else if(pathMatcher.match(FilterPattern.Pattern_Registration_Controller, request.getServletPath())) {
-	        	   String token = request.getHeader(JwtUtil.HEADER_REGISTRATION);
+	        	   String token = request.getHeader(TokenObject.HEADER_REGISTRATION);
 	        	   validateTokenService.validate_registration_token(token);
 	           }
 	       } catch (Exception e) {

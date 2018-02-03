@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jamie.travel.jwt.security.GenerateTokenService;
-import com.jamie.travel.jwt.security.JwtUtil;
+import com.jamie.travel.jwt.security.JwtUtils;
+import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.LoginService;
 
-@RequestMapping(value="/secret/login")
+@RequestMapping(value = TokenObject.MAINAPI+"/login")
 @Controller
 public class LoginController {
 	Logger log = LoggerFactory.getLogger(this.getClass());
@@ -35,7 +36,7 @@ public class LoginController {
 		 UserProfile u = loginService.generalChecking(userProfile);
 	        if(u != null) {
 	            String token = generateTokenService.login_general_token(u);
-	            response.addHeader(JwtUtil.HEADER_STRING, JwtUtil.TOKEN_PREFIX + " " + token);
+	            response.addHeader(TokenObject.HEADER_STRING, JwtUtils.TOKEN_PREFIX + " " + token);
 	        }else
 	            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong credentials");
 	    }
