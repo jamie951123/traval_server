@@ -45,6 +45,7 @@ public class ValidateTokenServiceImpl implements ValidateTokenService {
 		}
 	}
 
+	//	Registration
 	@Override
 	public boolean validate_registration_token(String token) {
 		// TODO Auto-generated method stub
@@ -61,6 +62,13 @@ public class ValidateTokenServiceImpl implements ValidateTokenService {
 			throw new TokenValidationException(e.getMessage());
 		}
 	}
+	
+	@Override
+	public Map<String, Object> split_registration_token(String token) {
+		// TODO Auto-generated method stub
+		return JwtUtils.validateToken(token,TokenObject.REGISTRATION_SECRET);
+	}
+	
 	
 	private void checkTokenThrowException(String iss, String sub,long iat,long expired,Role role){
 		if(ObjectUtils.isNotNullEmpty(iss)){

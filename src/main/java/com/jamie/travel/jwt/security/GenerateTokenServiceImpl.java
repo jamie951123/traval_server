@@ -45,7 +45,7 @@ public class GenerateTokenServiceImpl implements GenerateTokenService {
 		try{
 			LinkedHashMap<String,Object> map = new LinkedHashMap<>();
 			map.put("token_type", TokenType.APPLY);
-			map.put("resgisterKey", tokenModel.getResgisterKey());
+			map.put("registerKey", tokenModel.getResgisterKey());
 			map.put("expired", new Date(long_time + JwtUtils.REGISTRATION_EXPIRATION_TIME));
 			return JwtUtils.generateToken(map,TokenObject.REGISTRATION_SECRET);
 		}catch(Exception e){

@@ -73,7 +73,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 			userProfile.setPartyId(userProfile.getUsername()+".TL");
 			userProfile.setCreateBy(userProfile.getUsername()+".TL");
 			userProfile.setCreateDate(new Date());
-			userProfile.setRole(Role.GENERAL);
+			userProfile.setRole(userProfile.getRole());
 			userProfile.setStatus(Status.PROGRESS);
 			return userProfileDao.save(userProfile);
 		}catch(Exception e){

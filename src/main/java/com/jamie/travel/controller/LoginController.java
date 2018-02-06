@@ -37,8 +37,11 @@ public class LoginController {
 	        if(u != null) {
 	            String token = generateTokenService.login_general_token(u);
 	            response.addHeader(TokenObject.HEADER_STRING, JwtUtils.TOKEN_PREFIX + " " + token);
-	        }else
-	            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong credentials");
+	        }else {
+	            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong Account");
+//	            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong credentials");
+	        }
+	        
 	    }
 	  
 }

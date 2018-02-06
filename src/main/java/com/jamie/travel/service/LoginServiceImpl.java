@@ -1,15 +1,18 @@
 package com.jamie.travel.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
+import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.model.UserProfile;
 
 @Service
 public class LoginServiceImpl implements LoginService{
-
+	Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	UserProfileService userProfileService;
 	
@@ -28,12 +31,14 @@ public class LoginServiceImpl implements LoginService{
 			try{
 				u = userProfileService.findByUsernameAndpPassword(userProfile.getUsername(), userProfile.getPassword());
 				if(u != null){
+					log.info(LogMsg.infoLog("LoginService", new String[] {"Correct Account"}));
 					return u;
 				}else{
-					throw new TokenValidationException("Incorrect Account");
+					throw new TokenValidationException("Correct Account");
 				}
 			}catch(Exception e){
-				throw new TokenValidationException(e.getMessage());
+				log.error(LogMsg.errLog("LoginService", new String[] {e.getMessage()}));
+				return null;
 			}
 		}
 		return u;
