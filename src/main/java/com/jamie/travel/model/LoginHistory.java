@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -45,6 +47,7 @@ public @Data class LoginHistory  implements Serializable {
 	@Column(name = "expirationTime")
 	private Long expirationTime;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="userProfileId", insertable=false, updatable =false)
 	private UserProfile userProfile;	

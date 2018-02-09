@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -41,6 +43,7 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
+	@JsonManagedReference 
 	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
 	private List<LoginHistory> loginHistory;	
 	
