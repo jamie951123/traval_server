@@ -47,7 +47,7 @@ public @Data class LoginHistory  implements Serializable {
 	@Column(name = "expirationTime",nullable = false, updatable=false)
 	private Long expirationTime;
 
-	@JsonBackReference
+	@JsonBackReference(value="userProfile-loginHistory")
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="userProfileId", insertable=false, updatable =false)
 	private UserProfile userProfile;	

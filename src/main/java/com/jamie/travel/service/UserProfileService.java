@@ -12,6 +12,8 @@ public interface UserProfileService {
 	UserProfile findByUsernameAndPassword(String username,String password);
 	int countByUserName(String username);
 	int countByUserNameAndPassword(String username, String password);
+	UserProfile findByPartyId(String partyId);
 	//Save
 	UserProfile save(UserProfile userProfile);
+	
 }

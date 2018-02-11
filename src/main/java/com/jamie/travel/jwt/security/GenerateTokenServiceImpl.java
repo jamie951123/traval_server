@@ -27,7 +27,7 @@ public class GenerateTokenServiceImpl implements GenerateTokenService {
 		Role role = userProfile.getRole();
 		LinkedHashMap<String,Object> map = new LinkedHashMap<>();
 		map.put("iss", JwtUtils.iss);
-		map.put("sub", userProfile.getUsername());
+		map.put("sub", userProfile.getUsername()+".TL");
 		map.put("iat", token_iat);
 		map.put("expired", token_exp);
 		map.put("role", role);

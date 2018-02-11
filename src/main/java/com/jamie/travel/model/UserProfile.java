@@ -43,10 +43,35 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@JsonManagedReference 
+	@Column(name = "partyId",nullable = false)
+	private String partyId;
+	
+	@JsonManagedReference (value="userProfile-loginHistory")
 	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
 	private List<LoginHistory> loginHistory;	
 	
+	@JsonManagedReference (value="userProfile-trip")
+	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
+	private List<Trip> trip;	
+	
+	
+	
+	public String getPartyId() {
+		return partyId;
+	}
+
+	public void setPartyId(String partyId) {
+		this.partyId = partyId;
+	}
+	
+	public List<Trip> getTrip() {
+		return trip;
+	}
+
+	public void setTrip(List<Trip> trip) {
+		this.trip = trip;
+	}
+
 	public List<LoginHistory> getLoginHistory() {
 		return loginHistory;
 	}

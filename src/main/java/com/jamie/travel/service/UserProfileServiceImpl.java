@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jamie.travel.controller.UserProfileController;
+import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.dao.UserProfileDao;
+import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.model.Role;
 import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.type.Status;
@@ -65,6 +67,19 @@ public class UserProfileServiceImpl implements UserProfileService {
 		return 0;
 	}
 	
+	@Override
+	public UserProfile findByPartyId(String partyId) {
+		// TODO Auto-generated method stub
+		UserProfile u = userProfileDao.findByPartyId(partyId);
+		if(u != null && u.getUserProfileId() != null) {
+			return userProfileDao.findByPartyId(partyId);
+		}else {
+			log.error(LogMsg.errLog("UserProfile", new String[] {"findByPartyId","Account is not exist "}));
+			return null;
+		}
+		
+	}
+	
 	//Save
 	@Override
 	public UserProfile save(UserProfile userProfile) {
@@ -80,5 +95,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 			throw new RuntimeException("User can not create");
 		}
 	}
+
 
 }

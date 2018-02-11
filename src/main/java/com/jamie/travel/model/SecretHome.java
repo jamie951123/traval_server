@@ -18,8 +18,6 @@ import lombok.ToString;
 @MappedSuperclass
 public @Data class SecretHome {
 
-	@Column(name = "partyId",nullable = false)
-	private String partyId;
 	
 	@Column(name = "status",nullable = false)
 	@Enumerated(EnumType.STRING)
@@ -43,13 +41,6 @@ public @Data class SecretHome {
 	@Column(name = "closeDate")
 	private Date closeDate;
 
-	public String getPartyId() {
-		return partyId;
-	}
-
-	public void setPartyId(String partyId) {
-		this.partyId = partyId;
-	}
 
 	public Status getStatus() {
 		return status;
@@ -101,9 +92,9 @@ public @Data class SecretHome {
 
 	@Override
 	public String toString() {
-		return "SecretHome [partyId=" + partyId + ", status=" + status + ", createDate=" + createDate + ", createBy="
-				+ createBy + ", lastModifiedDate=" + lastModifiedDate + ", lastModifiedBy=" + lastModifiedBy
-				+ ", closeDate=" + closeDate + "]";
+		return "SecretHome [status=" + status + ", createDate=" + createDate + ", createBy=" + createBy
+				+ ", lastModifiedDate=" + lastModifiedDate + ", lastModifiedBy=" + lastModifiedBy + ", closeDate="
+				+ closeDate + "]";
 	}
 	
 	

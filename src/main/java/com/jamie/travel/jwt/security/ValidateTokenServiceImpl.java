@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
+import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.model.Role;
 import com.jamie.travel.service.UserProfileService;
 import com.jamie.travel.type.TokenType;
@@ -99,6 +100,19 @@ public class ValidateTokenServiceImpl implements ValidateTokenService {
 			log.info("role: " + role);
 		}else{
 			throw new TokenValidationException("[Token] -- without role");
+		}
+	}
+
+	@Override
+	public String token_getPartyId(String token) {
+		// TODO Auto-generated method stub
+		Map<String,Object> body = JwtUtils.validateToken(token,TokenObject.LOGIN_SECRET);
+		String sub = (String) (body.get("sub"));
+		if(ObjectUtils.isNotNullEmpty(sub)) {
+			return sub;
+		}else {
+			log.error(LogMsg.errLog("ValidateTokenService", new String[] {"token_getPartyId","Empty"}));
+			return null;
 		}
 	}
 }

@@ -23,6 +23,8 @@ public interface UserProfileDao extends JpaRepository<UserProfile,Long> {
 	@Query("select count (*) from UserProfile where username = ?1")
 	int countByUserName(String username);
 	
+	UserProfile findByPartyId(String partyId);
+	
 //	@Query("select count (*) from UserProfile where username = ?1 and password =?2")
 //	int countByUserNameAndPassword(String username, String password);
 	
