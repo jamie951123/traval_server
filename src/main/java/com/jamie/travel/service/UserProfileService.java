@@ -9,7 +9,7 @@ public interface UserProfileService {
 	//Find
 	List<UserProfile> findAll();
 	UserProfile findByUsername(String username);
-	UserProfile findByUsernameAndpPassword(String username,String password);
+	UserProfile findByUsernameAndPassword(String username,String password);
 	int countByUserName(String username);
 	int countByUserNameAndPassword(String username, String password);
 	//Save

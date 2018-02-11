@@ -41,10 +41,10 @@ public @Data class LoginHistory  implements Serializable {
 	@Column(name = "closeDate")
 	private Date closeDate;
 	
-	@Column(name = "token")
+	@Column(name = "token",nullable = false, updatable=false)
 	private String token;
 	
-	@Column(name = "expirationTime")
+	@Column(name = "expirationTime",nullable = false, updatable=false)
 	private Long expirationTime;
 
 	@JsonBackReference
@@ -111,6 +111,14 @@ public @Data class LoginHistory  implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "LoginHistory [id=" + id + ", userProfileId=" + userProfileId + ", createDate=" + createDate
+				+ ", closeDate=" + closeDate + ", token=" + token + ", expirationTime=" + expirationTime + "]";
+	}
+
+	
 	
 	
 	

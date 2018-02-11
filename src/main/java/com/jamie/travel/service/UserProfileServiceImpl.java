@@ -28,7 +28,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 
 	@Override
-	public UserProfile findByUsernameAndpPassword(String username, String password) {
+	public UserProfile findByUsernameAndPassword(String username, String password) {
 		// TODO Auto-generated method stub
 		try{
 			return userProfileDao.findByUsernameAndPassword(username, password);

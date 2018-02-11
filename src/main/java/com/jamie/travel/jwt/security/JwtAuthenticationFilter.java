@@ -39,8 +39,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	               String token = request.getHeader(TokenObject.HEADER_STRING);
 	               validateTokenService.validate_login_general(token);
 	           }else if(pathMatcher.match(FilterPattern.Pattern_Registration_Controller, request.getServletPath())) {
-	        	   String token = request.getHeader(TokenObject.HEADER_REGISTRATION);
-	        	   validateTokenService.validate_registration_token(token);
+		        	   String token = request.getHeader(TokenObject.HEADER_REGISTRATION);
+		        	   validateTokenService.validate_registration_token(token);
+	           }else if(pathMatcher.match(FilterPattern.Pattern_Trip_Controller, request.getServletPath())) {
+		        	   String token = request.getHeader(TokenObject.HEADER_USERTOKEN);
+		        	   validateTokenService.validate_login_general(token);
 	           }
 	       } catch (Exception e) {
 	           response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());

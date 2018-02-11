@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.jamie.travel.core.utils.GsonUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.logger.LogMsg;
+import com.jamie.travel.model.LoginHistory;
 import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.AdminService;
 import java.lang.reflect.Type;
@@ -36,4 +37,11 @@ public class AdminController {
 //		String gson = GsonUtils.getGson().toJson(userProfiles, listType);
 		return userProfiles;
 	} 
+	
+	@GetMapping(value ="/findAllHistory")
+	public @ResponseBody List<LoginHistory> findAllHistory(){
+		List<LoginHistory> loginHistorys = adminService.findAllHistory();
+		return loginHistorys;
+	} 
+	
 }

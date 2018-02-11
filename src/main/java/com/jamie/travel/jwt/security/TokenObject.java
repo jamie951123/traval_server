@@ -19,5 +19,6 @@ public class TokenObject {
 	
 	public static final String HEADER_STRING = "Authorization";
     public static final String HEADER_REGISTRATION = "Registration";
+    public static final String HEADER_USERTOKEN = "UserToken";
     
 }
