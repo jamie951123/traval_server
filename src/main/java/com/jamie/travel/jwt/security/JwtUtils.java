@@ -12,7 +12,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtUtils {
 	static final String iss = "System";
 	static final long REGISTRATION_EXPIRATION_TIME = 1800*1000; //expire date
-    public static final long EXPIRATION_TIME = 360000000*1000; // 100000 hour
+    public static final long EXPIRATION_TIME = 360000*1000; // 100 hour
     public static final String TOKEN_PREFIX = "Token:";
     
     

@@ -48,45 +48,11 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	
 	@JsonManagedReference (value="userProfile-loginHistory")
 	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	private List<LoginHistory> loginHistory;	
+	private List<LoginHistory> loginHistorys;	
 	
 	@JsonManagedReference (value="userProfile-trip")
 	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	private List<Trip> trip;	
-	
-	
-	
-	public String getPartyId() {
-		return partyId;
-	}
-
-	public void setPartyId(String partyId) {
-		this.partyId = partyId;
-	}
-	
-	public List<Trip> getTrip() {
-		return trip;
-	}
-
-	public void setTrip(List<Trip> trip) {
-		this.trip = trip;
-	}
-
-	public List<LoginHistory> getLoginHistory() {
-		return loginHistory;
-	}
-
-	public void setLoginHistory(List<LoginHistory> loginHistory) {
-		this.loginHistory = loginHistory;
-	}
-	
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
+	private List<Trip> trips;
 
 	public Long getUserProfileId() {
 		return userProfileId;
@@ -112,6 +78,38 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 		this.password = password;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getPartyId() {
+		return partyId;
+	}
+
+	public void setPartyId(String partyId) {
+		this.partyId = partyId;
+	}
+
+	public List<LoginHistory> getLoginHistorys() {
+		return loginHistorys;
+	}
+
+	public void setLoginHistorys(List<LoginHistory> loginHistorys) {
+		this.loginHistorys = loginHistorys;
+	}
+
+	public List<Trip> getTrips() {
+		return trips;
+	}
+
+	public void setTrips(List<Trip> trips) {
+		this.trips = trips;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -119,8 +117,10 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	@Override
 	public String toString() {
 		return "UserProfile [userProfileId=" + userProfileId + ", username=" + username + ", password=" + password
-				+ ", role=" + role + ", loginHistory=" + loginHistory + "]";
-	}
+				+ ", role=" + role + ", partyId=" + partyId + "]";
+	}	
+	
+	
 
 	
 	

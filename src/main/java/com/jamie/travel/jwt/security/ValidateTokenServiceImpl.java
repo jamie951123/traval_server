@@ -5,12 +5,14 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
 import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.model.Role;
+import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.UserProfileService;
 import com.jamie.travel.type.TokenType;
 
@@ -18,7 +20,7 @@ import com.jamie.travel.type.TokenType;
 public class ValidateTokenServiceImpl implements ValidateTokenService {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 	
-	
+	@Autowired
 	UserProfileService userProfileService;
 
 	@Override
@@ -115,4 +117,18 @@ public class ValidateTokenServiceImpl implements ValidateTokenService {
 			return null;
 		}
 	}
+
+	@Override
+	public UserProfile token_getUserProfile(String token) {
+		// TODO Auto-generated method stub
+		Map<String,Object> body = JwtUtils.validateToken(token,TokenObject.LOGIN_SECRET);
+		String sub = (String) (body.get("sub"));
+		if(ObjectUtils.isNotNullEmpty(sub)) {
+			return userProfileService.findByPartyId(sub);
+		}else {
+			log.error(LogMsg.errLog("ValidateTokenService", new String[] {"token_getUserProfile","Empty"}));
+			return null;
+		}
+	}
+	
 }

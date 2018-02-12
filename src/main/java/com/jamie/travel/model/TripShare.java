@@ -24,12 +24,8 @@ public @Data class TripShare implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "shareId", updatable=false)
+	@Column(name = "shareId",nullable = false, updatable=false)
 	private Long shareId;
-	
-
-	@Column(name = "tripId")
-	private Long tripId;
 	
 	@Column(name = "userProfileId",nullable = false)
 	private Long userProfileId;
@@ -37,7 +33,7 @@ public @Data class TripShare implements Serializable {
 	
 	@JsonBackReference (value="trip-tripShare")
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="tripId", insertable=false, updatable =false)
+    @JoinColumn(name="tripId")
 	private Trip trip;	
 	//
 	@JsonBackReference
@@ -50,12 +46,6 @@ public @Data class TripShare implements Serializable {
 	}
 	public void setShareId(Long shareId) {
 		this.shareId = shareId;
-	}
-	public Long getTripId() {
-		return tripId;
-	}
-	public void setTripId(Long tripId) {
-		this.tripId = tripId;
 	}
 	public Long getUserProfileId() {
 		return userProfileId;
@@ -77,8 +67,10 @@ public @Data class TripShare implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "TripShare [shareId=" + shareId + ", tripId=" + tripId + ", userProfileId=" + userProfileId + "]";
-	}	
+		return "TripShare [shareId=" + shareId + ", userProfileId=" + userProfileId + "]";
+	}
+	
+	
 	
 	
 	

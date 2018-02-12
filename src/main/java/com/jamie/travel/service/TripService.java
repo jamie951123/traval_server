@@ -9,4 +9,6 @@ public interface TripService {
 
 	List <Trip> findAll();
 	Trip save(UserProfile userProfile, Trip trip);
+	
+	Trip test(Trip trip);
 }

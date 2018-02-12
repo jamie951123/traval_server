@@ -1,6 +1,7 @@
 package com.jamie.travel.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,47 +27,51 @@ import lombok.ToString;
 
 @ToString
 @Entity(name = "Trip")
-@Table(name= "Trip")
+@Table(name = "Trip")
 public @Data class Trip extends SecretHome implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tripId",nullable = false, updatable=false)
+	@Column(name = "tripId", nullable = false, updatable = false)
 	private Long tripId;
-	
-	@Column(name = "userProfileId",nullable = false)
+
+	@Column(name = "userProfileId", nullable = false)
 	private Long userProfileId;
-	
-	
-	//Context
-	
+
+	// Context
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fromDate")
 	private Date fromDate;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "endDate")
 	private Date endDate;
-	
+
 	@Column(name = "tripName")
 	private String tripName;
-	
+
 	@Column(name = "tripDesc")
 	private String tripDesc;
-	
-	
-	@Column(name = "shareId")
-	private Long shareId;
-	
+
 	//
-	@JsonBackReference (value="userProfile-trip")
+	@JsonBackReference(value = "userProfile-trip")
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="userProfileId", insertable=false, updatable =false)
-	private UserProfile userProfile;	
-	
-	@JsonManagedReference  (value="trip-tripShare")
-	@OneToMany(mappedBy="trip", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	private List<TripShare> tripShare;
+	@JoinColumn(name = "userProfileId", insertable = false, updatable = false)
+	private UserProfile userProfile;
+
+	@JsonManagedReference(value = "trip-tripShare")
+	@OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<TripShare> tripShares;
+
+	public void addTripShare(TripShare tripShare) {
+		tripShare.setTrip(this);
+
+		// if (tripShares == null) {
+		// tripShares = new ArrayList<TripShare>();
+		// }
+		// tripShares.add(tripShare);
+	}
 
 	public Long getTripId() {
 		return tripId;
@@ -100,8 +105,6 @@ public @Data class Trip extends SecretHome implements Serializable {
 		this.endDate = endDate;
 	}
 
-	
-
 	public String getTripName() {
 		return tripName;
 	}
@@ -118,14 +121,6 @@ public @Data class Trip extends SecretHome implements Serializable {
 		this.tripDesc = tripDesc;
 	}
 
-	public Long getShareId() {
-		return shareId;
-	}
-
-	public void setShareId(Long shareId) {
-		this.shareId = shareId;
-	}
-
 	public UserProfile getUserProfile() {
 		return userProfile;
 	}
@@ -134,22 +129,18 @@ public @Data class Trip extends SecretHome implements Serializable {
 		this.userProfile = userProfile;
 	}
 
-	
-
-	public List<TripShare> getTripShare() {
-		return tripShare;
+	public List<TripShare> getTripShares() {
+		return tripShares;
 	}
 
-	public void setTripShare(List<TripShare> tripShare) {
-		this.tripShare = tripShare;
+	public void setTripShares(List<TripShare> tripShares) {
+		this.tripShares = tripShares;
 	}
 
 	@Override
 	public String toString() {
 		return "Trip [tripId=" + tripId + ", userProfileId=" + userProfileId + ", fromDate=" + fromDate + ", endDate="
-				+ endDate + ", tripName=" + tripName + ", tripDesc=" + tripDesc + ", shareId=" + shareId + "]";
-	}	
-	
-	
-	
+				+ endDate + ", tripName=" + tripName + ", tripDesc=" + tripDesc + "]";
+	}
+
 }

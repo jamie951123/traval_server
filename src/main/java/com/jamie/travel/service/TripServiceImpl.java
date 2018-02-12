@@ -12,15 +12,16 @@ import com.jamie.travel.controller.UserProfileController;
 import com.jamie.travel.dao.TripDao;
 import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.model.Trip;
+import com.jamie.travel.model.TripShare;
 import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.type.Status;
 
 @Service
-public class TripServiceImpl implements TripService{
+public class TripServiceImpl implements TripService {
 	Logger log = LoggerFactory.getLogger(UserProfileController.class);
 	@Autowired
 	private TripDao tripDao;
-	
+
 	@Override
 	public List<Trip> findAll() {
 		// TODO Auto-generated method stub
@@ -30,19 +31,38 @@ public class TripServiceImpl implements TripService{
 	@Override
 	public Trip save(UserProfile userProfile, Trip trip) {
 		// TODO Auto-generated method stub
-		if(trip != null) {
-			trip.setUserProfileId(userProfile.getUserProfileId());
-			trip.setStatus(Status.PROGRESS);
-			trip.setCreateDate(new Date());
-			trip.setCreateBy(userProfile.getPartyId());
-			trip.getTripShare().get(0).setUserProfileId(userProfile.getUserProfileId());;
-			return tripDao.save(trip);
-		}else {
-			log.error(LogMsg.errLog("Trip", new String[] {"save","Error"}));
-			return null;
+		try {
+			if (trip != null) {
+				trip.setUserProfileId(userProfile.getUserProfileId());
+				trip.setStatus(Status.PROGRESS);
+				trip.setCreateDate(new Date());
+				trip.setCreateBy(userProfile.getPartyId());
+
+				// Handle Trip Share
+				if (trip.getTripShares() != null && trip.getTripShares().size() > 0) {
+//					for (int i = 0; i < trip.getTripShares().size(); i++) {
+//						TripShare tripShare = trip.getTripShares().get(i);
+//						trip.addTripShare(tripShare);
+//					}
+				} else {
+					log.error(LogMsg.errLog("Trip", new String[] { "save", "TripShare must be a least user own" }));
+					throw new Exception("The Trip must be a least user own ");
+				}
+				return tripDao.save(trip);
+			} else {
+				log.error(LogMsg.errLog("Trip", new String[] { "save", "Error" }));
+				throw new Exception("The Trip is Empty ");
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
 		}
+
 	}
 
+	@Override
+	public Trip test(Trip trip) {
+		// TODO Auto-generated method stub
+		return tripDao.save(trip);
+	}
 
-	
 }
