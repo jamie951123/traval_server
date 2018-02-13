@@ -1,5 +1,6 @@
 package com.jamie.travel.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import lombok.ToString;
 
 @ToString
 @MappedSuperclass
-public @Data class SecretHome {
+public @Data class SecretHome implements Serializable {
 
 	
 	@Column(name = "status",nullable = false)
@@ -26,9 +27,6 @@ public @Data class SecretHome {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "createDate",nullable = false, updatable=false)
 	private Date createDate;
-	
-	@Column(name = "createBy",nullable = false, updatable=false)
-	private String createBy;
 	
 	@Column(name = "lastModifiedDate")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -58,14 +56,6 @@ public @Data class SecretHome {
 		this.createDate = createDate;
 	}
 
-	public String getCreateBy() {
-		return createBy;
-	}
-
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
-	}
-
 	public Date getLastModifiedDate() {
 		return lastModifiedDate;
 	}
@@ -92,9 +82,8 @@ public @Data class SecretHome {
 
 	@Override
 	public String toString() {
-		return "SecretHome [status=" + status + ", createDate=" + createDate + ", createBy=" + createBy
-				+ ", lastModifiedDate=" + lastModifiedDate + ", lastModifiedBy=" + lastModifiedBy + ", closeDate="
-				+ closeDate + "]";
+		return "SecretHome [status=" + status + ", createDate=" + createDate + ", lastModifiedDate=" + lastModifiedDate
+				+ ", lastModifiedBy=" + lastModifiedBy + ", closeDate=" + closeDate + "]";
 	}
 	
 	

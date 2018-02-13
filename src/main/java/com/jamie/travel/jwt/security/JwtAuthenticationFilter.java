@@ -1,7 +1,6 @@
 package com.jamie.travel.jwt.security;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -15,9 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import com.jamie.travel.core.utils.ObjectUtils;
-import com.jamie.travel.exception.TokenValidationException;
 
 @Service
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -44,7 +40,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	           }else if(pathMatcher.match(FilterPattern.Pattern_Trip_Controller, request.getServletPath())) {
 		        	   String token = request.getHeader(TokenObject.HEADER_USERTOKEN);
 		        	   validateTokenService.validate_login_general(token);
-	           }
+	           }else if(pathMatcher.match(FilterPattern.Pattern_Image_Controller, request.getServletPath())) {
+	        	   String token = request.getHeader(TokenObject.HEADER_USERTOKEN);
+	        	   	   validateTokenService.validate_login_general(token);
+           }
 	       } catch (Exception e) {
 	           response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
 	           throw e;

@@ -46,6 +46,9 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	@Column(name = "partyId",nullable = false)
 	private String partyId;
 	
+	@Column(name = "createBy",nullable = false, updatable=false)
+	private String createBy;
+	
 	@JsonManagedReference (value="userProfile-loginHistory")
 	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
 	private List<LoginHistory> loginHistorys;	
@@ -53,6 +56,15 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	@JsonManagedReference (value="userProfile-trip")
 	@OneToMany(mappedBy="userProfile", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
 	private List<Trip> trips;
+
+	
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
 
 	public Long getUserProfileId() {
 		return userProfileId;
@@ -117,7 +129,7 @@ public @Data class UserProfile extends SecretHome implements Serializable {
 	@Override
 	public String toString() {
 		return "UserProfile [userProfileId=" + userProfileId + ", username=" + username + ", password=" + password
-				+ ", role=" + role + ", partyId=" + partyId + "]";
+				+ ", role=" + role + ", partyId=" + partyId + ", createBy=" + createBy + "]";
 	}	
 	
 	

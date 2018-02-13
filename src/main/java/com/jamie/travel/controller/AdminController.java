@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.jamie.travel.admin.service.AdminService;
 import com.jamie.travel.core.utils.GsonUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.model.LoginHistory;
 import com.jamie.travel.model.UserProfile;
-import com.jamie.travel.service.AdminService;
+
 import java.lang.reflect.Type;
 
 @RequestMapping(value = TokenObject.MAINAPI+"/admin")

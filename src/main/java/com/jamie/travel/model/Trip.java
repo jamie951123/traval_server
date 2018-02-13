@@ -54,6 +54,8 @@ public @Data class Trip extends SecretHome implements Serializable {
 	@Column(name = "tripDesc")
 	private String tripDesc;
 
+	@Column(name = "createBy",nullable = false, updatable=false)
+	private String createBy;
 	//
 	@JsonBackReference(value = "userProfile-trip")
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -64,6 +66,10 @@ public @Data class Trip extends SecretHome implements Serializable {
 	@OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<TripShare> tripShares;
 
+	@JsonManagedReference(value = "trip-tripImages")
+	@OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<TripImage> tripImages;
+	
 	public void addTripShare(TripShare tripShare) {
 		tripShare.setTrip(this);
 
@@ -72,6 +78,27 @@ public @Data class Trip extends SecretHome implements Serializable {
 		// }
 		// tripShares.add(tripShare);
 	}
+
+	
+	public String getCreateBy() {
+		return createBy;
+	}
+
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+
+	public List<TripImage> getTripImages() {
+		return tripImages;
+	}
+
+
+	public void setTripImages(List<TripImage> tripImages) {
+		this.tripImages = tripImages;
+	}
+
 
 	public Long getTripId() {
 		return tripId;
@@ -140,7 +167,7 @@ public @Data class Trip extends SecretHome implements Serializable {
 	@Override
 	public String toString() {
 		return "Trip [tripId=" + tripId + ", userProfileId=" + userProfileId + ", fromDate=" + fromDate + ", endDate="
-				+ endDate + ", tripName=" + tripName + ", tripDesc=" + tripDesc + "]";
+				+ endDate + ", tripName=" + tripName + ", tripDesc=" + tripDesc + ", createBy=" + createBy + "]";
 	}
 
 }

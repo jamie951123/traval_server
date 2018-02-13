@@ -1,4 +1,4 @@
-package com.jamie.travel.service;
+package com.jamie.travel.admin.service;
 
 import java.util.List;
 
