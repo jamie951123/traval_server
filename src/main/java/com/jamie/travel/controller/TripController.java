@@ -79,7 +79,5 @@ public class TripController {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong Token");
 			return null;
 		}
-
-
 	}
 }

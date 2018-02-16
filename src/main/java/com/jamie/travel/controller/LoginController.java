@@ -1,7 +1,6 @@
 package com.jamie.travel.controller;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +18,6 @@ import com.jamie.travel.jwt.security.GenerateTokenService;
 import com.jamie.travel.jwt.security.JwtUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.LoginHistory;
 import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.LoginService;
 
