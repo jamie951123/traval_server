@@ -45,6 +45,10 @@ dependencies {
     
     //replace getting and setting
     compile 'org.projectlombok:lombok:1.16.18'
+    
+    //Image Converter
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.5'
+    
    
 	
 }
