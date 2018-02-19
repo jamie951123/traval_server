@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import com.jamie.travel.controller.UserProfileController;
 import com.jamie.travel.dao.TripDao;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.Trip;
-import com.jamie.travel.model.TripShare;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.Trip;
+import com.jamie.travel.table.model.TripShare;
+import com.jamie.travel.table.model.UserProfile;
 import com.jamie.travel.type.Status;
 
 @Service

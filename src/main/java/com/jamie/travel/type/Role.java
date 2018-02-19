@@ -1,4 +1,4 @@
-package com.jamie.travel.model;
+package com.jamie.travel.type;
 
 public enum Role {
 	ADMIN,

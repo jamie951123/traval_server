@@ -11,15 +11,21 @@ public class DirectoryUtils {
 
 		// if the directory does not exist, create it
 		if (!theDir.exists()) {
-			System.out.println("creating directory: " + theDir.getName());
+			System.out.println("creating directory: " + path);
 			boolean result = false;
 
 			try {
+				if(!theDir.getParentFile().exists()) {
+					theDir.getParentFile().mkdirs();
+				}
 				theDir.mkdir();
 				result = true;
 			} catch (SecurityException se) {
 				// handle it
 				System.out.println("SecurityException");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
 			}
 			if (result) {
 				System.out.println("DIR created");

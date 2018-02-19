@@ -1,7 +1,7 @@
 package com.jamie.travel.jwt.security;
 
 import com.jamie.travel.model.TokenModel;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.UserProfile;
 
 public interface GenerateTokenService {
 	//Login

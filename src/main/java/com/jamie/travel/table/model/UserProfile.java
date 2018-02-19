@@ -1,4 +1,4 @@
-package com.jamie.travel.model;
+package com.jamie.travel.table.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.jamie.travel.type.Role;
 
 import lombok.Data;
 import lombok.ToString;

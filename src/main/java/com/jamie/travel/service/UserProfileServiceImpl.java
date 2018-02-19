@@ -12,8 +12,8 @@ import com.jamie.travel.controller.UserProfileController;
 import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.dao.UserProfileDao;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.Role;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.UserProfile;
+import com.jamie.travel.type.Role;
 import com.jamie.travel.type.Status;
 
 @Service

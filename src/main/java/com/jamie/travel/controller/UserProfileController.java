@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jamie.travel.jwt.security.TokenObject;
-import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.UserProfileService;
+import com.jamie.travel.table.model.UserProfile;
 
 @RequestMapping(value = TokenObject.MAINAPI+"/authentication/user")
 @Controller

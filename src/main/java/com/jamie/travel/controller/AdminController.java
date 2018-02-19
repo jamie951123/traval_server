@@ -17,8 +17,8 @@ import com.jamie.travel.admin.service.AdminService;
 import com.jamie.travel.core.utils.GsonUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.LoginHistory;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.LoginHistory;
+import com.jamie.travel.table.model.UserProfile;
 
 import java.lang.reflect.Type;
 

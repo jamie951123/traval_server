@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.jamie.travel.dao.LoginHistoryDao;
 import com.jamie.travel.dao.UserProfileDao;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.LoginHistory;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.LoginHistory;
+import com.jamie.travel.table.model.UserProfile;
 
 @Service
 public class AdminServiceImpl implements AdminService{

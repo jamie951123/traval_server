@@ -1,7 +1,7 @@
 package com.jamie.travel.service;
 
-import com.jamie.travel.model.LoginHistory;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.LoginHistory;
+import com.jamie.travel.table.model.UserProfile;
 
 public interface LoginService {
 	UserProfile generalChecking(UserProfile userProfile);

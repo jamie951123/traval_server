@@ -15,8 +15,8 @@ import com.jamie.travel.jwt.security.JwtUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.jwt.security.ValidateTokenService;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.LoginHistory;
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.LoginHistory;
+import com.jamie.travel.table.model.UserProfile;
 
 @Service
 public class LoginServiceImpl implements LoginService{

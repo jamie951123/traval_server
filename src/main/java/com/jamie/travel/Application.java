@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 import com.jamie.travel.jwt.security.JwtAuthenticationFilter;
+import com.jamie.travel.logger.LogMsg;
 import com.jamie.travel.system.initial.service.InitialServer;
 
 @ComponentScan
@@ -77,9 +78,15 @@ public class Application extends SpringBootServletInitializer {
 
 	@Bean
 	public boolean initial() {
-		System.out.println("Server initial beginning");
-		initialServer.photo_folder();
-		System.out.println("Server initial finished");
-		return true;
+		try {
+			System.out.println("Server initial beginning");
+			initialServer.photo_folder();
+			System.out.println("Server initial finished");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(LogMsg.errLog("Bean", new String[] {"initial",e.getMessage()}));
+			return false;
+		}
 	}
 }

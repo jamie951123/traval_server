@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.jwt.security.ValidateTokenService;
-import com.jamie.travel.model.Trip;
-import com.jamie.travel.model.TripShare;
-import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.TripService;
+import com.jamie.travel.table.model.Trip;
+import com.jamie.travel.table.model.TripShare;
+import com.jamie.travel.table.model.UserProfile;
 import com.jamie.travel.type.Status;
 
 @RequestMapping(value = TokenObject.MAINAPI + "/authentication/trip")

@@ -19,9 +19,9 @@ import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.jwt.security.TokenObject;
 import com.jamie.travel.jwt.security.ValidateTokenService;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.Role;
-import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.UserProfileService;
+import com.jamie.travel.table.model.UserProfile;
+import com.jamie.travel.type.Role;
 
 @RequestMapping(value = TokenObject.MAINAPI+"/authentication/registration")
 @Controller

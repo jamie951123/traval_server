@@ -1,4 +1,4 @@
-package com.jamie.travel.model;
+package com.jamie.travel.table.model;
 
 import java.io.Serializable;
 

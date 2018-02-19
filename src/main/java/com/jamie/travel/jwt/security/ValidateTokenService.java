@@ -2,7 +2,7 @@ package com.jamie.travel.jwt.security;
 
 import java.util.Map;
 
-import com.jamie.travel.model.UserProfile;
+import com.jamie.travel.table.model.UserProfile;
 
 public interface ValidateTokenService {
 	boolean validate_login_general(String token);	

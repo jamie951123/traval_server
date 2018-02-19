@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import com.jamie.travel.core.utils.ObjectUtils;
 import com.jamie.travel.exception.TokenValidationException;
 import com.jamie.travel.logger.LogMsg;
-import com.jamie.travel.model.Role;
-import com.jamie.travel.model.UserProfile;
 import com.jamie.travel.service.UserProfileService;
+import com.jamie.travel.table.model.UserProfile;
+import com.jamie.travel.type.Role;
 import com.jamie.travel.type.TokenType;
 
 @Service
